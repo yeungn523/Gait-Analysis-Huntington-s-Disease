@@ -13,6 +13,8 @@ xlabel('Time (sec)');
 ylabel('mV');
 grid on
 title('hunt14m');
+filename = 'figure_1.jpg';
+print(filename, '-djpeg');
 
 Fs = 300;
 gaitSignal =hunt14m.val;
@@ -22,6 +24,8 @@ xlim([0 30])
 xlabel('Sample Number')
 ylabel('mV')
 title('hunt14m');
+filename = 'figure_2.jpg';
+print(filename, '-djpeg');
 
 figure;
 plot(time,control1m.val(1,:));
@@ -32,6 +36,8 @@ xlabel('Time (sec)');
 ylabel('mV');
 grid on
 title('control1m');
+filename = 'figure_3.jpg';
+print(filename, '-djpeg');
 
 Fs = 300;
 gaitSignal =control1m.val;
@@ -41,6 +47,8 @@ xlim([0 30])
 xlabel('Sample Number')
 ylabel('mV')
 title('control1m');
+filename = 'figure_4.jpg';
+print(filename, '-djpeg');
 
 %Plot graph of against time between strides(sec) against stride number for the right foot of patients labelled ‘control 1-5’, 'hunt4’,‘hunt13’, ‘hunt1’, ‘hunt8’ and ‘hunt5’(10 records).Exclude the first 10 crossings to remove transients.
 control1m=load('control1m.mat');
@@ -72,8 +80,10 @@ for i = 1:5
 end
 xlabel('Stride Number')
 ylabel('Time Between Strides (sec)')
-legend('ALS','Control')
+legend('Hunt','Control')
 grid on
+filename = 'figure_5.jpg';
+print(filename, '-djpeg');
 
 %Aligning and comparing signals from the left and right foot records using dynamic time warping for ‘control1’ and ‘hunt14’as an example
 %Calculating the Euclidean distance
@@ -87,6 +97,8 @@ y1=hunt14m.val(2,:);
 figure
 dtw(x1,y1);
 legend('Left foot','Right foot');
+filename = 'figure_6.jpg';
+print(filename, '-djpeg');
 
 x2=control1m.val(1,:);
 y2=control1m.val(2,:);
@@ -94,6 +106,8 @@ y2=control1m.val(2,:);
 figure
 dtw(x2,y2);
 legend('Left foot','Right foot');
+filename = 'figure_7.jpg';
+print(filename, '-djpeg');
 
 %Construct Feature Vector
 pnames = {"control1m.val","control2m.val","control3m.val","control4m.val",...
@@ -117,3 +131,6 @@ xlabel('Variance of Inter-Stride Times')
 ylabel('Distance Between Segments')
 legend('Hunt','Control')
 grid on
+filename = 'figure_8.jpg';
+print(filename, '-djpeg');
+
